@@ -12,3 +12,14 @@
   gap: 15px;
   align-items: center;
 }
+
+#file_input {
+  background-color: gray;
+  height: 100px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#file_input::file-selector-button {
+  display: none;
+}
