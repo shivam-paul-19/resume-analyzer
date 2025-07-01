@@ -2,7 +2,7 @@
 
 export default function Form({action}) {
   return (
-    <form action={action} className="form">
+    <form onSubmit={action} method="POST" className="form">
         <textarea name="job" id="job" style={{
           border: "solid black 1px",
           borderRadius: 10,

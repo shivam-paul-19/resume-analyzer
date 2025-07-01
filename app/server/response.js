@@ -47,11 +47,51 @@ function makePrompt(resume, job) {
   return prompt;
 }
 
+function parseResponse(response) {
+  let last = response.indexOf("Relevance Summary");
+  let first = 15;
+  const ats = Number(response.substring(first, last));
+
+  first = 37;
+  last = response.indexOf("Missing or Weak Points:");
+
+  const summary = response.substring(first, last).trim();
+
+  first = last + 24;
+  last = response.indexOf("Improvement Suggestions:");
+
+  const weak = response.substring(first, last).trim();
+
+  first = last + 25;
+  last = response.indexOf("Matched Keywords:");
+
+  const sugg =  response.substring(first, last).trim();
+
+  first = last + 18;
+  last = response.indexOf("Unmatched Keywords:");
+
+  const match = response.substring(first, last).trim();
+
+  first = last + 20;
+  last = response.lastIndexOf("---")-1;
+
+  const unmatch = response.substring(first, last).trim();
+
+  return {
+    ats: ats,
+    summary: summary,
+    weak: weak,
+    sugg: sugg,
+    match: match,
+    unmatch: unmatch
+  }
+}
+
 export async function getResponse(resume, job) {
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   const result = await model.generateContent(makePrompt(resume, job));
   let response = result.response.text();
-  console.log(response);
+  return parseResponse(response);
 }

@@ -5,7 +5,6 @@
 import fs from "fs/promises";
 import path from "path";
 import { PdfReader } from "pdfreader";
-import { getResponse } from "./response";
 
 async function uploadFile(file) {
     const bytes = await file.arrayBuffer();
@@ -30,7 +29,11 @@ async function extract(file) {
     });
 }
 
-export async function getText(file, job) {
+export async function getText(file) {
+    if(!file.name.endsWith(".pdf")) {
+        return -1;
+    }
+    
     // the file will be uploaded to the uploads folder
     await uploadFile(file);
 
@@ -38,7 +41,5 @@ export async function getText(file, job) {
 
     // removing the extra undefined string
     data = data.replaceAll("undefined", "");
-
-    let response = await getResponse(data, job);
-    console.log(response);
+    return data;
 }

@@ -12,6 +12,7 @@
     "@google/generative-ai": "^0.24.1",
     "dotenv": "^17.0.0",
     "fs": "^0.0.1-security",
+    "marked": "^16.0.0",
     "next": "15.3.4",
     "pdfreader": "^3.0.7",
     "react": "^19.0.0",
