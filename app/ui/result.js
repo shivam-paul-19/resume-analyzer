@@ -15,7 +15,7 @@ export default function Result({result, setPage}) {
         } else {
             setAtsColor("#d62828");
         }
-    }, []);
+    }, [result.ats]);
     
     return (
         <div style={{color: "white", textAlign: "center"}}>
@@ -33,14 +33,14 @@ export default function Result({result, setPage}) {
             <div className="row">
                 <div className="card p-5" style={{backgroundColor: "#ffb3c6", color: "black"}}>
                 <b>Weak or Missing points</b>
-                <div><span className="text-sm">{result.weak.map((e) => {
-                    return <li>{e}</li>
+                <div><span className="text-sm">{result.weak.map((e, idx) => {
+                    return <li key={idx}>{e}</li>
                 })}</span></div>
             </div>
                 <div className="card p-5" style={{backgroundColor: "#80ffdb", color: "black"}}>
                 <b>Suggestions</b>
-                <div><span className="text-sm">{result.sugg.map((e) => {
-                    return <li>{e}</li>
+                <div><span className="text-sm">{result.sugg.map((e, idx) => {
+                    return <li key={idx}>{e}</li>
                 })}</span></div>
             </div>
             </div>
