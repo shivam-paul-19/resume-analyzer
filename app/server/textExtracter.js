@@ -12,9 +12,7 @@ async function uploadFile(file) {
     const buffer = Buffer.from(bytes);
 
     const tmpDir = os.tmpdir();
-    const uploadsDir = path.join(tmpDir, "uploads");
-
-    const filePath = path.join(uploadsDir, file.name);
+    const filePath = path.join(tmpDir, file.name);
     await fs.writeFile(filePath, buffer);
     return filePath;
 }
