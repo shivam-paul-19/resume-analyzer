@@ -30,10 +30,6 @@ async function extract(file) {
 }
 
 export async function getText(file) {
-    if(!file.name.endsWith(".pdf")) {
-        return -1;
-    }
-    
     // the file will be uploaded to the uploads folder
     await uploadFile(file);
 

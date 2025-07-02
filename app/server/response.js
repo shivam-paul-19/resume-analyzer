@@ -60,12 +60,14 @@ function parseResponse(response) {
   first = last + 24;
   last = response.indexOf("Improvement Suggestions:");
 
-  const weak = response.substring(first, last).trim();
+  let weak = response.substring(first, last).trim().split("-");
+  weak.shift(0);
 
   first = last + 25;
   last = response.indexOf("Matched Keywords:");
 
-  const sugg =  response.substring(first, last).trim();
+  let sugg =  response.substring(first, last).trim().split("-");
+  sugg.shift(0);
 
   first = last + 18;
   last = response.indexOf("Unmatched Keywords:");
