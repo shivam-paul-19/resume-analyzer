@@ -32,5 +32,5 @@ An intelligent resume analyzer that compares your resume against a job descripti
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/resume-analyzer.git
+git clone https://github.com/shivam-paul-19/resume-analyzer.git
 cd resume-analyzer
